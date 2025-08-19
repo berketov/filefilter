@@ -64,12 +64,15 @@ public class Settings {
     public List<String> getPaths() {
         return paths;
     }
+
     private void setNewPathOut(String pathOut) {
         if (Files.exists(Path.of(pathOut))) {
             this.pathOut = pathOut;
         } else {
             System.out.println("Невозможно сохранить файл по указанному Вами пути.");
         }
+
+
     }
 }
 

@@ -24,19 +24,13 @@ public class FileReader implements Reader {
         for (String currentPath : settings.getPaths()) {
             try (BufferedReader reader = Files.newBufferedReader(Paths.get(currentPath))) {
                 String line;
-                boolean emptyFileFlag = false;
                 while ((line = reader.readLine()) != null) {
                     if (!line.isEmpty()) {
                         allLinesFromFiles.add(line);
-                        emptyFileFlag = true;
                     }
                 }
-                if (!emptyFileFlag) {
-                    System.out.println("File " + currentPath + " is empty");
-                }
             } catch (IOException e) {
-                System.out.println("File " + currentPath + " not found");
-                continue;
+                System.out.println("Файл " + currentPath + " не найден.");
             }
         }
         if (settings.isAppendMode()) {

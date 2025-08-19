@@ -1,13 +1,13 @@
 package shift.berketov.statistics;
 
 import shift.berketov.settings.Settings;
-import shift.berketov.filter.DataFilter;
+import shift.berketov.filter.DataFilterImpl;
 
 public class FilteredDataStatistics implements Statistics {
-    private DataFilter filter;
+    private DataFilterImpl filter;
     private Settings settings;
 
-    public FilteredDataStatistics(DataFilter filter, Settings config) {
+    public FilteredDataStatistics(DataFilterImpl filter, Settings config) {
         this.filter = filter;
         this.settings = config;
         intStat = filter.getIntStat();

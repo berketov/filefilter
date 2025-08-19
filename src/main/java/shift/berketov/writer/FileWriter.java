@@ -1,8 +1,7 @@
 package shift.berketov.writer;
 
 import shift.berketov.settings.Settings;
-import shift.berketov.filter.DataFilter;
-import cft.bsd.statistics.*;
+import shift.berketov.filter.DataFilterImpl;
 import shift.berketov.statistics.FloatStatistics;
 import shift.berketov.statistics.IntStatistics;
 import shift.berketov.statistics.StatisticsData;
@@ -16,22 +15,19 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileWriter implements Writer{
-    private DataFilter filter;
-    private Settings settings;
+public class FileWriter implements Writer {
+    private final Settings settings;
+    private final IntStatistics intStat;
+    private final FloatStatistics floatStat;
+    private final StringStatistics stringStat;
+    private final List<StatisticsData> allElementsForWrite = new ArrayList<>();
 
-    public FileWriter(DataFilter filter, Settings config) {
-        this.filter = filter;
-        this.settings = config;
+    public FileWriter(DataFilterImpl filter, Settings settings) {
+        this.settings = settings;
         intStat = filter.getIntStat();
         floatStat = filter.getFloatStat();
         stringStat = filter.getStringStat();
     }
-
-    private IntStatistics intStat;
-    private FloatStatistics floatStat;
-    private StringStatistics stringStat;
-    private List<StatisticsData> allElementsForWrite = new ArrayList<>();
 
     @Override
     public void write() {
@@ -41,9 +37,9 @@ public class FileWriter implements Writer{
             setPrefix(settings, allElementsForWrite);
         }
 
-        if (settings.hasNewPathForFile()) {
-            setNewPathOut(settings, allElementsForWrite);
-        }
+//        if (settings.hasNewPathForFile()) {
+//            setNewPathOut(settings, allElementsForWrite);
+//        } //todo заменил на изменение параметра в BufferedWriter
 
         for (StatisticsData data : allElementsForWrite) {
             List<String> lines = data.getDataFromStatistics();
@@ -51,14 +47,14 @@ public class FileWriter implements Writer{
                 continue;
             } else {
                 try (BufferedWriter writer = new BufferedWriter(
-                        new java.io.FileWriter(data.getPath(), StandardCharsets.UTF_8))) {
+                        new java.io.FileWriter((settings.getPathOut() + "/" + data.getName()), StandardCharsets.UTF_8))) {
                     for (String line : lines) {
                         writer.write(line);
                         writer.newLine();
                         writer.flush();
                     }
                 } catch (IOException e) {
-                    System.out.println("Failed to write file");
+                    System.out.println("Файл не удалось записать.");
                     break;
                 }
             }
@@ -71,13 +67,13 @@ public class FileWriter implements Writer{
         allElementsForWrite.add(stringStat);
     }
 
-    private void setPrefix (Settings settings, List<StatisticsData> data) {
+    private void setPrefix(Settings settings, List<StatisticsData> data) {
         String nameWithPrefix;
         String pfx = settings.getFileNamePrefix();
         for (String currentFile : settings.getPaths()) {
             if (currentFile.equals(pfx)) {
                 System.out.println("The prefix is the same as the filename to filter. " +
-                                    "You may have forgotten the prefix.");
+                        "You may have forgotten the prefix.");
             }
         }
         if (!"".equals(pfx)) {
@@ -86,23 +82,23 @@ public class FileWriter implements Writer{
                 item.setName(nameWithPrefix);
                 item.setPath(nameWithPrefix);
             }
-        } else  {
+        } else {
             System.out.println("After the -p option, enter a prefix for the filename");
         }
     }
 
-    private void setNewPathOut(Settings settings, List<StatisticsData> data) {
-        String newPath;
-        String in = settings.getPathOut();
-        if (!Files.exists(Path.of(in))) {
-            System.out.println("If you want change the default path for saving files,\n" +
-                                "you must enter a new valid path (within quotation marks) after the '-o' parameter");
-            return;
-        }else {
-            for (StatisticsData element : data) {
-                newPath = in + "/" + element.getName();
-                element.setPath(newPath);
-            }
-        }
-    }
+//    private void setNewPathOut(Settings settings, List<StatisticsData> data) {
+//        String newPath;
+//        String in = settings.getPathOut();
+//        if (!Files.exists(Path.of(in))) {
+//            System.out.println("If you want change the default path for saving files,\n" +
+//                    "you must enter a new valid path (within quotation marks) after the '-o' parameter");
+//            return;
+//        } else {
+//            for (StatisticsData item : data) {
+//                newPath = in + "/" + item.getName();
+//                item.setPath(newPath);
+//            }
+//        }
+//    }
 }

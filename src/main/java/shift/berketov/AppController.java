@@ -1,15 +1,18 @@
 package shift.berketov;
 
-import shift.berketov.settings.Settings;
 import shift.berketov.filter.DataFilter;
+import shift.berketov.reader.Reader;
+import shift.berketov.settings.Settings;
+import shift.berketov.filter.DataFilterImpl;
 import shift.berketov.reader.FileReader;
 import shift.berketov.statistics.FilteredDataStatistics;
 import shift.berketov.statistics.Statistics;
 import shift.berketov.writer.FileWriter;
+import shift.berketov.writer.Writer;
 
 public class AppController {
     private final Settings settings;
-    private FileReader reader;
+    private Reader reader;
     private DataFilter filter;
 
     public AppController(Settings settings) {
@@ -31,17 +34,17 @@ public class AppController {
     }
 
     private void fileFiltration() {
-        filter = new DataFilter();
+        filter = new DataFilterImpl();
         filter.filtration(reader);
     }
 
-    private void getStatistics () {
-        Statistics statistics = new FilteredDataStatistics(filter, settings);
+    private void getStatistics() {
+        Statistics statistics = new FilteredDataStatistics((DataFilterImpl) filter, settings);
         statistics.generateStatistics();
     }
 
     private void runWriter() {
-        FileWriter writer = new FileWriter(filter, settings);
+        Writer writer = new FileWriter((DataFilterImpl) filter, settings);
         writer.write();
     }
 }
