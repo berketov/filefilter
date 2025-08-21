@@ -31,7 +31,7 @@ public class FileWriter implements Writer {
         if (settings.hasFileNamePrefix()) {
             setPrefix(settings, allElementsForWrite);
         }
-        
+
 //        if (settings.hasNewPathForFile()) {
 //            setNewPathOut(settings, allElementsForWrite);
 //        } //todo заменил на изменение параметра в BufferedWriter
