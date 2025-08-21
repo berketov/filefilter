@@ -22,7 +22,7 @@ public class AppController {
     public void launch() {
         runReader();
         fileFiltration();
-        if (settings.hasShortStatistics()) {
+        if (settings.hasShortStatistics()||settings.hasFullStatistics()) {
             getStatistics();
         }
         runWriter();

@@ -17,26 +17,21 @@ import java.util.List;
 
 public class FileWriter implements Writer {
     private final Settings settings;
-    private final IntStatistics intStat;
-    private final FloatStatistics floatStat;
-    private final StringStatistics stringStat;
     private final List<StatisticsData> allElementsForWrite = new ArrayList<>();
 
     public FileWriter(DataFilterImpl filter, Settings settings) {
         this.settings = settings;
-        intStat = filter.getIntStat();
-        floatStat = filter.getFloatStat();
-        stringStat = filter.getStringStat();
+        allElementsForWrite.add(filter.getIntStat());
+        allElementsForWrite.add(filter.getFloatStat());
+        allElementsForWrite.add(filter.getStringStat());
     }
 
     @Override
     public void write() {
-        fillElementsListForWrite();
-
         if (settings.hasFileNamePrefix()) {
             setPrefix(settings, allElementsForWrite);
         }
-
+        
 //        if (settings.hasNewPathForFile()) {
 //            setNewPathOut(settings, allElementsForWrite);
 //        } //todo заменил на изменение параметра в BufferedWriter
@@ -61,11 +56,12 @@ public class FileWriter implements Writer {
         }
     }
 
-    private void fillElementsListForWrite() {
-        allElementsForWrite.add(intStat);
-        allElementsForWrite.add(floatStat);
-        allElementsForWrite.add(stringStat);
-    }
+    //todo заполнил в конструкторе
+//    private void fillElementsListForWrite() {
+//        allElementsForWrite.add(intStat);
+//        allElementsForWrite.add(floatStat);
+//        allElementsForWrite.add(stringStat);
+//    }
 
     private void setPrefix(Settings settings, List<StatisticsData> data) {
         String nameWithPrefix;

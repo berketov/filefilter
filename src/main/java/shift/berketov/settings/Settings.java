@@ -52,17 +52,15 @@ public class Settings {
     public boolean hasFileNamePrefix() {return isFileNamePrefix;}
     public boolean isAppendMode() {return appendMode;}
     public boolean hasShortStatistics() {return isShortStatistics;}
-    public boolean hasFullStatistics() {
-        return isFullStatistics;
-    }
+    public boolean hasFullStatistics() {return isFullStatistics;}
     private boolean isFileExist(String path) {return Files.exists(Path.of(path));}
 
     public String getPathOut() {return pathOut;}
-    public String getFileNamePrefix() {
-        return fileNamePrefix;
-    }
-    public List<String> getPaths() {
-        return paths;
+    public String getFileNamePrefix() {return fileNamePrefix;}
+    public List<String> getPaths() {return paths;}
+
+    public void setFileWithNamePrefix(String fileNamePrefix) {
+        this.fileNamePrefix = fileNamePrefix;
     }
 
     private void setNewPathOut(String pathOut) {
@@ -71,6 +69,8 @@ public class Settings {
         } else {
             System.out.println("Невозможно сохранить файл по указанному Вами пути.");
         }
+
+
 
 
     }

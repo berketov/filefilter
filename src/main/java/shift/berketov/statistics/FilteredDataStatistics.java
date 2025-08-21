@@ -4,20 +4,17 @@ import shift.berketov.settings.Settings;
 import shift.berketov.filter.DataFilterImpl;
 
 public class FilteredDataStatistics implements Statistics {
-    private DataFilterImpl filter;
-    private Settings settings;
+    private final Settings settings;
+    private final IntStatistics intStat;
+    private final FloatStatistics floatStat;
+    private final StringStatistics stringStat;
 
-    public FilteredDataStatistics(DataFilterImpl filter, Settings config) {
-        this.filter = filter;
-        this.settings = config;
+    public FilteredDataStatistics(DataFilterImpl filter, Settings settings) {
+        this.settings = settings;
         intStat = filter.getIntStat();
         floatStat = filter.getFloatStat();
         stringStat = filter.getStringStat();
     }
-
-    private IntStatistics intStat;
-    private FloatStatistics floatStat;
-    private StringStatistics stringStat;
 
     @Override
     public void generateStatistics() {
@@ -29,10 +26,10 @@ public class FilteredDataStatistics implements Statistics {
     }
 
     private void generateShortStatistics() {
-        System.out.println("Short stats {" +
-                "Number of items in file " + intStat.getName() + " = " + intStat.getIntCounter() + ", " +
-                "Number of items in file " + floatStat.getName() + " = " + floatStat.getFloatCounter() + ", " +
-                "Number of items in file " + stringStat.getName() + " = " + stringStat.getStrCounter() +
+        System.out.println("Короткая статистика {" +
+                "Количество элементов в файле " + intStat.getName() + " = " + intStat.getIntCounter() + ", " +
+                "Количество элементов в файле " + floatStat.getName() + " = " + floatStat.getFloatCounter() + ", " +
+                "Количество элементов в файле " + stringStat.getName() + " = " + stringStat.getStrCounter() +
                 '}');
     }
 
