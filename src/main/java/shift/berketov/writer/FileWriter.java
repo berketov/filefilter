@@ -2,16 +2,11 @@ package shift.berketov.writer;
 
 import shift.berketov.settings.Settings;
 import shift.berketov.filter.DataFilterImpl;
-import shift.berketov.statistics.FloatStatistics;
-import shift.berketov.statistics.IntStatistics;
 import shift.berketov.statistics.StatisticsData;
-import shift.berketov.statistics.StringStatistics;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +23,6 @@ public class FileWriter implements Writer {
 
     @Override
     public void write() {
-        if (settings.hasFileNamePrefix()) {
-            setPrefix(settings, allElementsForWrite);
-        }
-
-//        if (settings.hasNewPathForFile()) {
-//            setNewPathOut(settings, allElementsForWrite);
-//        } //todo заменил на изменение параметра в BufferedWriter
-
         for (StatisticsData data : allElementsForWrite) {
             List<String> lines = data.getDataFromStatistics();
             if (lines.isEmpty()) {
@@ -56,32 +43,33 @@ public class FileWriter implements Writer {
         }
     }
 
-    //todo заполнил в конструкторе
-//    private void fillElementsListForWrite() {
-//        allElementsForWrite.add(intStat);
-//        allElementsForWrite.add(floatStat);
-//        allElementsForWrite.add(stringStat);
+    //todo заменил на метод setName в DataFilterImpl
+//    private void setPrefix(Settings settings, List<StatisticsData> data) {
+//        for (StatisticsData item : data) {
+//               String nameWithPrefix = settings.getFileNamePrefix() + item.getName();
+//               item.setName(nameWithPrefix);
+//            }
 //    }
 
-    private void setPrefix(Settings settings, List<StatisticsData> data) {
-        String nameWithPrefix;
-        String pfx = settings.getFileNamePrefix();
-        for (String currentFile : settings.getPaths()) {
-            if (currentFile.equals(pfx)) {
-                System.out.println("The prefix is the same as the filename to filter. " +
-                        "You may have forgotten the prefix.");
-            }
-        }
-        if (!"".equals(pfx)) {
-            for (StatisticsData item : data) {
-                nameWithPrefix = pfx + item.getName();
-                item.setName(nameWithPrefix);
-                item.setPath(nameWithPrefix);
-            }
-        } else {
-            System.out.println("After the -p option, enter a prefix for the filename");
-        }
-    }
+//    private void setPrefix(Settings settings, List<StatisticsData> data) {
+//        String nameWithPrefix;
+//        String pfx = settings.getFileNamePrefix();
+//        for (String currentFile : settings.getPaths()) {
+//            if (currentFile.equals(pfx)) {
+//                System.out.println("The prefix is the same as the filename to filter. " +
+//                        "You may have forgotten the prefix.");
+//            }
+//        }
+//        if (!"".equals(pfx)) {
+//            for (StatisticsData item : data) {
+//                nameWithPrefix = pfx + item.getName();
+//                item.setName(nameWithPrefix);
+//                item.setPath(nameWithPrefix);
+//            }
+//        } else {
+//            System.out.println("After the -p option, enter a prefix for the filename");
+//        }
+//    }
 
 //    private void setNewPathOut(Settings settings, List<StatisticsData> data) {
 //        String newPath;
@@ -96,5 +84,15 @@ public class FileWriter implements Writer {
 //                item.setPath(newPath);
 //            }
 //        }
+//    }
+
+    //        if (settings.hasNewPathForFile()) {
+//            setNewPathOut(settings, allElementsForWrite);
+//        } //todo заменил на изменение параметра в BufferedWriter
+    //todo заполнил в конструкторе
+//    private void fillElementsListForWrite() {
+//        allElementsForWrite.add(intStat);
+//        allElementsForWrite.add(floatStat);
+//        allElementsForWrite.add(stringStat);
 //    }
 }

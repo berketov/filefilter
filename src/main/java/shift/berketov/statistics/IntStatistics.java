@@ -1,5 +1,7 @@
 package shift.berketov.statistics;
 
+import shift.berketov.settings.Settings;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

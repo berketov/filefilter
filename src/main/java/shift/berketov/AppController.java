@@ -34,7 +34,7 @@ public class AppController {
     }
 
     private void fileFiltration() {
-        filter = new DataFilterImpl();
+        filter = new DataFilterImpl(settings);
         filter.filtration(reader);
     }
 

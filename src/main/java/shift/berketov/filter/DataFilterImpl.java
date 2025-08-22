@@ -1,14 +1,21 @@
 package shift.berketov.filter;
 
 import shift.berketov.reader.Reader;
+import shift.berketov.settings.Settings;
 import shift.berketov.statistics.FloatStatistics;
 import shift.berketov.statistics.IntStatistics;
 import shift.berketov.statistics.StringStatistics;
 
 public class DataFilterImpl implements DataFilter {
+    Settings settings;
     private final IntStatistics intStat = new IntStatistics();
     private final FloatStatistics floatStat = new FloatStatistics();
     private final StringStatistics stringStat = new StringStatistics();
+
+    public DataFilterImpl(Settings settings) {
+        this.settings = settings;
+    }
+
     @Override
     public void filtration(Reader reader) {
         for (String s : reader.getAllLinesFromFiles()) {
@@ -19,6 +26,9 @@ public class DataFilterImpl implements DataFilter {
             } else {
                 stringStat.setLine(s);
             }
+        }
+        if (settings.hasFileNamePrefix()) {
+            setPrefix();
         }
     }
 
@@ -40,6 +50,12 @@ public class DataFilterImpl implements DataFilter {
         }
     }
 
+    private void setPrefix () {
+        intStat.setName(settings.getFileNamePrefix() + intStat.getName());
+        floatStat.setName(settings.getFileNamePrefix() + floatStat.getName());
+        stringStat.setName(settings.getFileNamePrefix() + stringStat.getName());
+    }
+
     public IntStatistics getIntStat() {
         return intStat;
     }
@@ -49,7 +65,5 @@ public class DataFilterImpl implements DataFilter {
     public StringStatistics getStringStat() {
         return stringStat;
     }
-
-
 }
 

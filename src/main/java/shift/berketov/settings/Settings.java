@@ -12,7 +12,6 @@ public class Settings {
 
     private boolean appendMode;
     private boolean isFileNamePrefix;
-    private boolean isNewPathForFile;
     private boolean isShortStatistics;
     private boolean isFullStatistics;
 
@@ -24,13 +23,14 @@ public class Settings {
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-o" -> {
-                    isNewPathForFile = true;
                     this.setNewPathOut(args[i + 1]);
+                    i++;
                     continue;
                 }
                 case "-p" -> {
                     fileNamePrefix = args[i + 1];
                     isFileNamePrefix = true;
+                    i++;
                     continue;
                 }
                 case "-a" -> {
@@ -57,7 +57,6 @@ public class Settings {
         }
     }
 
-    public boolean hasNewPathForFile() {return isNewPathForFile;}
     public boolean hasFileNamePrefix() {return isFileNamePrefix;}
     public boolean isAppendMode() {return appendMode;}
     public boolean hasShortStatistics() {return isShortStatistics;}
@@ -68,22 +67,18 @@ public class Settings {
     public String getFileNamePrefix() {return fileNamePrefix;}
     public List<String> getPaths() {return paths;}
 
-    public void setFileWithNamePrefix(String fileNamePrefix) {
-        this.fileNamePrefix = fileNamePrefix;
-    }
-
     private void setNewPathOut(String pathOut) {
         if (Files.exists(Path.of(pathOut))) {
             this.pathOut = pathOut;
         } else {
             System.out.println("Невозможно сохранить файл по указанному Вами пути.");
         }
-
-
-
-
     }
+
 }
+
+//   public boolean hasNewPathForFile() {return isNewPathForFile;}
+//    private boolean isNewPathForFile;
 
 // //    private boolean checkPathOut() {
 ////        return Files.exists(Path.of(this.pathOut));
