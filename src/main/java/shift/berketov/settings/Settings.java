@@ -52,7 +52,7 @@ public class Settings {
             } else if (args[i].endsWith(".txt") && isFileExist(args[i])) {
                 paths.add(args[i]);
             } else {
-                throw new IllegalArgumentException("Вы ввели неверный аргумент, обратитесь к инструкции программы.");
+                throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + "), обратитесь к инструкции программы");
             }
         }
     }
