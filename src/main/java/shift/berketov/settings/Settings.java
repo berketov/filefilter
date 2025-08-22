@@ -26,16 +26,25 @@ public class Settings {
                 case "-o" -> {
                     isNewPathForFile = true;
                     this.setNewPathOut(args[i + 1]);
+                    continue;
                 }
                 case "-p" -> {
                     fileNamePrefix = args[i + 1];
                     isFileNamePrefix = true;
+                    continue;
                 }
-                case "-a" -> appendMode = true;
-                case "-s" -> isShortStatistics = true;
+                case "-a" -> {
+                    appendMode = true;
+                    continue;
+                }
+                case "-s" -> {
+                    isShortStatistics = true;
+                    continue;
+                }
                 case "-f" -> {
                     isShortStatistics = true;
                     isFullStatistics = true;
+                    continue;
                 }
             }
             if (args[i].endsWith(".txt") && !isFileExist(args[i])) {
