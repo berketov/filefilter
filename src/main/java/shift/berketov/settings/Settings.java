@@ -23,42 +23,45 @@ public class Settings {
 
     private void parseArgs(String[] args) {
         if (args.length == 0) {
-            System.out.println("Аргументы не найдены. Повторите попытку ввода.");
-        }
-        for (int i = 0; i < args.length; i++) {
-            switch (args[i]) {
-                case "-o" -> {
-                    this.setNewPathOut(args[i + 1]);
-                    i++;
-                    continue;
+            System.out.println("Ни один аргумент не найден. Повторите попытку ввода в соответствии с инструкцией.");
+        } else {
+            for (int i = 0; i < args.length; i++) {
+                switch (args[i]) {
+                    case "-o" -> {
+                        this.setNewPathOut(args[i + 1]);
+                        i++;
+                        continue;
+                    }
+                    case "-p" -> {
+                        fileNamePrefix = args[i + 1];
+                        isFileNamePrefix = true;
+                        i++;
+                        continue;
+                    }
+                    case "-a" -> {
+                        appendMode = true;
+                        continue;
+                    }
+                    case "-s" -> {
+                        isShortStatistics = true;
+                        continue;
+                    }
+                    case "-f" -> {
+                        isShortStatistics = true;
+                        isFullStatistics = true;
+                        continue;
+                    }
                 }
-                case "-p" -> {
-                    fileNamePrefix = args[i + 1];
-                    isFileNamePrefix = true;
-                    i++;
-                    continue;
+                if (args[i].endsWith(".txt") && !isFileExist(args[i])) {
+                    System.out.printf("Файл %s не найден.", args[i]);
+                } else if (args[i].endsWith(".txt") && isFileExist(args[i])) {
+                    paths.add(args[i]);
+                } else {
+                    throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + ")," +
+                            "обратитесь к инструкции программы. Возможно Вы не указали тип файла в конце его имени.");
                 }
-                case "-a" -> {
-                    appendMode = true;
-                    continue;
-                }
-                case "-s" -> {
-                    isShortStatistics = true;
-                    continue;
-                }
-                case "-f" -> {
-                    isShortStatistics = true;
-                    isFullStatistics = true;
-                    continue;
-                }
-            }
-            if (args[i].endsWith(".txt") && !isFileExist(args[i])) {
-                System.out.printf("Файл %s не найден.", args[i]);
-            } else if (args[i].endsWith(".txt") && isFileExist(args[i])) {
-                paths.add(args[i]);
-            } else {
-                throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + ")," +
-                        "обратитесь к инструкции программы. Возможно Вы не указали тип файла в конце его имени.");
+
+                //TODO надо как-то проверить есть ли в списке аргументов путь до файла, и если нет, то вообще ничего не делать
             }
         }
     }
