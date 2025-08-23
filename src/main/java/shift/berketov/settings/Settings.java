@@ -1,7 +1,5 @@
 package shift.berketov.settings;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -60,9 +58,10 @@ public class Settings {
                     throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + ")," +
                             "обратитесь к инструкции программы. Возможно Вы не указали тип файла в конце его имени.");
                 }
-
-                //TODO надо как-то проверить есть ли в списке аргументов путь до файла, и если нет, то вообще ничего не делать
             }
+        }
+        if (paths.isEmpty()) {
+           throw new IllegalArgumentException("Файлы с типом данных .txt не найдены. Для фильтрации укажите файлы данного типа.");
         }
     }
 
@@ -84,35 +83,3 @@ public class Settings {
     public String getFileNamePrefix() {return fileNamePrefix;}
     public List<String> getPaths() {return paths;}
 }
-
-//   public boolean hasNewPathForFile() {return isNewPathForFile;}
-//    private boolean isNewPathForFile;
-
-// //    private boolean checkPathOut() {
-////        return Files.exists(Path.of(this.pathOut));
-////    }//todo перенёс метод проверки в setPathOut
-
-
-//        if (!this.checkPathOut()) {
-//            //TODO error - тут под вопросом, потому что есть путь я реализовал его в setNewPathOut
-
-//        }
-
-
-
-//   if (args[i].endsWith(".txt") && isFileExist(args[i])) {
-//           paths.add(args[i]);
-//           } else if (paths.isEmpty()) {
-//           System.out.println("Вы не указали путь или имя текстового файла для фильтрации, или же такого файла не существует.");
-//           } else {
-//           throw new IllegalArgumentException("Вы ввели неверный аргумент, обратитесь к инструкции программы.");
-//           }
-
-
-//if (args[i].endsWith(".txt") && isFileExist(args[i])) {
-//        paths.add(args[i]);
-//        } else if (paths.isEmpty()) {
-//        System.out.println("Файлы для фильтрации не найдены. Проверьте правильность пути и наличие txt-файлов.");
-//        } else {
-//        throw new IllegalArgumentException("Вы ввели неверный аргумент, обратитесь к инструкции программы.");
-//        }
