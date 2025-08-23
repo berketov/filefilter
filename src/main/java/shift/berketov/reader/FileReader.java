@@ -29,6 +29,10 @@ public class FileReader implements Reader {
                         allLinesFromFiles.add(line);
                     }
                 }
+                if (allLinesFromFiles.isEmpty()) {
+                    System.out.println("Файл" + currentPath + " не имеет данных для фильтрации.");
+                    break;
+                }
             } catch (IOException e) {
                 System.out.println("Файл " + currentPath + " не найден.");
             }

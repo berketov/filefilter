@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 public class FloatStatistics implements StatisticsData{
     private final List<Double> dataFromFilter = new ArrayList<>();
     private String fileName = "floats.txt";
-    private String path = "floats.txt";
     private int floatCounter;
     private double sum;
 
@@ -16,12 +15,10 @@ public class FloatStatistics implements StatisticsData{
         dataFromFilter.add(d);
         this.floatCounter++;
     }
-
+    @Override
     public String getName() {
         return this.fileName;
     }
-
-    public String getPath() {return path;}
 
     public int getFloatCounter() {
         return floatCounter;
@@ -55,23 +52,19 @@ public class FloatStatistics implements StatisticsData{
                 .collect(Collectors.toList());
         return strList;
     }
-
+    @Override
     public void setName(String name) {
         this.fileName = name;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public void printFullStat() {
-        System.out.println( "Full statistics{" +
-                "File name = '" + fileName + '\'' +
-                ", Total number of items = " + floatCounter +
-                ", min = " + getMin() +
-                ", max = " + getMax() +
-                ", sum = " + getSum() +
-                ", average = " + getAverage() +
+        System.out.println( "Полная статистика{" +
+                "Имя файла = '" + fileName + '\'' +
+                ", Общее количество элементов = " + floatCounter +
+                ", минимальное число = " + getMin() +
+                ", максимальное число = " + getMax() +
+                ", сумма всех чисел = " + getSum() +
+                ", среднее = " + getAverage() +
                 '}');
     }
 }

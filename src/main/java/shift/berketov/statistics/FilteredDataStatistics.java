@@ -1,7 +1,7 @@
 package shift.berketov.statistics;
 
 import shift.berketov.settings.Settings;
-import shift.berketov.filter.DataFilterImpl;
+import shift.berketov.filter.FilterByDataType;
 
 public class FilteredDataStatistics implements Statistics {
     private final Settings settings;
@@ -9,7 +9,7 @@ public class FilteredDataStatistics implements Statistics {
     private final FloatStatistics floatStat;
     private final StringStatistics stringStat;
 
-    public FilteredDataStatistics(DataFilterImpl filter, Settings settings) {
+    public FilteredDataStatistics(FilterByDataType filter, Settings settings) {
         this.settings = settings;
         intStat = filter.getIntStat();
         floatStat = filter.getFloatStat();

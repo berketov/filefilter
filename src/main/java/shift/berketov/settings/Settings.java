@@ -1,5 +1,7 @@
 package shift.berketov.settings;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -20,6 +22,9 @@ public class Settings {
     }
 
     private void parseArgs(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Аргументы не найдены. Повторите попытку ввода.");
+        }
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-o" -> {
@@ -52,8 +57,17 @@ public class Settings {
             } else if (args[i].endsWith(".txt") && isFileExist(args[i])) {
                 paths.add(args[i]);
             } else {
-                throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + "), обратитесь к инструкции программы");
+                throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + ")," +
+                        "обратитесь к инструкции программы. Возможно Вы не указали тип файла в конце его имени.");
             }
+        }
+    }
+
+    private void setNewPathOut(String pathOut) {
+        if (Files.exists(Path.of(pathOut))) {
+            this.pathOut = pathOut;
+        } else {
+            throw new IllegalArgumentException("Невозможно сохранить файл по указанному Вами пути.");
         }
     }
 
@@ -66,15 +80,6 @@ public class Settings {
     public String getPathOut() {return pathOut;}
     public String getFileNamePrefix() {return fileNamePrefix;}
     public List<String> getPaths() {return paths;}
-
-    private void setNewPathOut(String pathOut) {
-        if (Files.exists(Path.of(pathOut))) {
-            this.pathOut = pathOut;
-        } else {
-            System.out.println("Невозможно сохранить файл по указанному Вами пути.");
-        }
-    }
-
 }
 
 //   public boolean hasNewPathForFile() {return isNewPathForFile;}

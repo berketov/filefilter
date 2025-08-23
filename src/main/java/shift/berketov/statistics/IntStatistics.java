@@ -1,7 +1,5 @@
 package shift.berketov.statistics;
 
-import shift.berketov.settings.Settings;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +8,6 @@ import java.util.stream.Collectors;
 public class IntStatistics implements StatisticsData{
     private final List<Long> dataFromFilter = new ArrayList<>();
     private String fileName = "integers.txt";
-    private String path = "integers.txt";
     private long intCounter;
     private long sum;
 
@@ -18,12 +15,10 @@ public class IntStatistics implements StatisticsData{
         dataFromFilter.add(d);
         this.intCounter++;
     }
-
+    @Override
     public String getName() {
         return this.fileName;
     }
-
-    public String getPath() {return path;}
 
     public long getIntCounter() {
         return intCounter;
@@ -57,24 +52,19 @@ public class IntStatistics implements StatisticsData{
                 .collect(Collectors.toList());
         return strList;
     }
-
+    @Override
     public void setName(String name) {
         this.fileName = name;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public void printFullStat() {
-        System.out.println( "Full statistics{" +
-                "File name = '" + fileName + '\'' +
-                ", Total number of items = " + intCounter +
-                ", min = " + getMin() +
-                ", max = " + getMax() +
-                ", sum = " + getSum() +
-                ", average = " + getAverage() +
+        System.out.println( "Полная статистика{" +
+                "Имя файла = '" + fileName + '\'' +
+                ", Общее количество элементов = " + intCounter +
+                ", минимальное число = " + getMin() +
+                ", максимальное число = " + getMax() +
+                ", сумма всех чисел = " + getSum() +
+                ", среднее = " + getAverage() +
                 '}');
     }
-
 }

@@ -1,7 +1,7 @@
 package shift.berketov.writer;
 
 import shift.berketov.settings.Settings;
-import shift.berketov.filter.DataFilterImpl;
+import shift.berketov.filter.FilterByDataType;
 import shift.berketov.statistics.StatisticsData;
 
 import java.io.BufferedWriter;
@@ -14,7 +14,7 @@ public class FileWriter implements Writer {
     private final Settings settings;
     private final List<StatisticsData> allElementsForWrite = new ArrayList<>();
 
-    public FileWriter(DataFilterImpl filter, Settings settings) {
+    public FileWriter(FilterByDataType filter, Settings settings) {
         this.settings = settings;
         allElementsForWrite.add(filter.getIntStat());
         allElementsForWrite.add(filter.getFloatStat());

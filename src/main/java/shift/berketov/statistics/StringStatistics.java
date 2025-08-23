@@ -9,19 +9,16 @@ import static java.util.Comparator.comparing;
 public class StringStatistics implements StatisticsData{
     private final List<String> dataFromFilter = new ArrayList<>();
     private String fileName = "strings.txt";
-    private String path = "strings.txt";
     private int strCounter;
 
     public void setLine(String s) {
         dataFromFilter.add(s);
         this.strCounter++;
     }
-
+    @Override
     public String getName() {
         return this.fileName;
     }
-
-    public String getPath() {return path;}
 
     public int getStrCounter() {
         return strCounter;
@@ -40,19 +37,17 @@ public class StringStatistics implements StatisticsData{
     public List<String> getDataFromStatistics() {
         return dataFromFilter;
     }
-
+    @Override
     public void setName(String name) {
         this.fileName = name;
     }
 
-    public void setPath(String path) {this.path = path;}
-
     public void printFullStat() {
-        System.out.println( "Full statistics{" +
-                "File name = '" + fileName + '\'' +
-                ", Total number of items = " + getStrCounter() +
-                ", smallest string = " + getShortestString() + " number" +
-                ", largest string = " + getLongestString() + " number" +
+        System.out.println( "Полная статистика{" +
+                "Имя файла = '" + fileName + '\'' +
+                ", Общее количество элементов = " + getStrCounter() +
+                ", длинна самой короткой строчки = " + getShortestString() +
+                ", длинна самой длинной строчки = " + getLongestString() +
                 '}');
     }
 }

@@ -6,18 +6,19 @@ import shift.berketov.statistics.FloatStatistics;
 import shift.berketov.statistics.IntStatistics;
 import shift.berketov.statistics.StringStatistics;
 
-public class DataFilterImpl implements DataFilter {
+public class FilterByDataType implements Filter {
     Settings settings;
     private final IntStatistics intStat = new IntStatistics();
     private final FloatStatistics floatStat = new FloatStatistics();
     private final StringStatistics stringStat = new StringStatistics();
 
-    public DataFilterImpl(Settings settings) {
+    public FilterByDataType(Settings settings) {
         this.settings = settings;
     }
 
     @Override
     public void filtration(Reader reader) {
+
         for (String s : reader.getAllLinesFromFiles()) {
             if (isInteger(s)) {
                 intStat.setDigit(Long.parseLong(s));
