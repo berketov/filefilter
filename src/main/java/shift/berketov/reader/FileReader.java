@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class FileReader implements Reader {
     private final Settings settings;
@@ -36,24 +34,6 @@ public class FileReader implements Reader {
             } catch (IOException e) {
                 System.out.println("Файл " + currentPath + " не найден.");
             }
-        }
-        if (settings.isAppendMode()) {
-            updateContent();
-        } else {
-            return;
-        }
-    }
-
-    private void updateContent() {
-        System.out.println("Введите данные через запятую и нажмите 'enter':");
-        Scanner scanner = new Scanner(System.in);
-        String in = scanner.nextLine();
-        if (in.isEmpty()) {
-            System.out.println("Вы ничего не ввели. \n");
-            return;
-        } else {
-            String[] words = in.split(",|, ");
-            allLinesFromFiles.addAll(Arrays.asList(words));
         }
     }
 

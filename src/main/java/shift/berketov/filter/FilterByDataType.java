@@ -6,6 +6,11 @@ import shift.berketov.statistics.FloatStatistics;
 import shift.berketov.statistics.IntStatistics;
 import shift.berketov.statistics.StringStatistics;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 public class FilterByDataType implements Filter {
     Settings settings;
     private final IntStatistics intStat = new IntStatistics();
@@ -18,8 +23,12 @@ public class FilterByDataType implements Filter {
 
     @Override
     public void filtration(Reader reader) {
+        List<String> listForFiltration = new ArrayList<>(reader.getAllLinesFromFiles());
+        if (settings.isAppendMode()) {
+            updateContent(listForFiltration);
+        }
 
-        for (String s : reader.getAllLinesFromFiles()) {
+        for (String s : listForFiltration) {
             if (isInteger(s)) {
                 intStat.setDigit(Long.parseLong(s));
             } else if (isFloat(s)) {
@@ -30,6 +39,19 @@ public class FilterByDataType implements Filter {
         }
         if (settings.hasFileNamePrefix()) {
             setPrefix();
+        }
+    }
+
+    private void updateContent(List<String> listForFiltration) {
+        System.out.println("Введите данные через запятую и нажмите 'enter':");
+        Scanner scanner = new Scanner(System.in);
+        String in = scanner.nextLine();
+        if (in.isEmpty()) {
+            System.out.println("Вы ничего не ввели. \n");
+            return;
+        } else {
+            String[] words = in.split(",|, ");
+            listForFiltration.addAll(Arrays.asList(words));
         }
     }
 
@@ -51,7 +73,7 @@ public class FilterByDataType implements Filter {
         }
     }
 
-    private void setPrefix () {
+    private void setPrefix() {
         intStat.setName(settings.getFileNamePrefix() + intStat.getName());
         floatStat.setName(settings.getFileNamePrefix() + floatStat.getName());
         stringStat.setName(settings.getFileNamePrefix() + stringStat.getName());
@@ -60,9 +82,11 @@ public class FilterByDataType implements Filter {
     public IntStatistics getIntStat() {
         return intStat;
     }
+
     public FloatStatistics getFloatStat() {
         return floatStat;
     }
+
     public StringStatistics getStringStat() {
         return stringStat;
     }
