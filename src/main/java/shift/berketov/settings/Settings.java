@@ -82,4 +82,5 @@ public class Settings {
     public String getPathOut() {return pathOut;}
     public String getFileNamePrefix() {return fileNamePrefix;}
     public List<String> getPaths() {return paths;}
-}
+ }
+
