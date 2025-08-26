@@ -14,11 +14,11 @@
 
 * Скопируйте проект с GitHub, используя команду:
 ```bash 
-   git clone https://github.com/SergioBerketov/file-filter.git
+   git clone https://github.com/berketov/filefilter.git
 ```
-* Откройте окно командной строки в папке прокета, или перейдите в скопированный каталог с помощью команды:
+* Откройте окно командной строки в папке проекта, или перейдите в скопированный каталог с помощью команды:
 ```bash
-   cd ...your-path\file-filter
+   cd ...your-path\filefilter
 ```
 * Скомпилируйте проект и создайте .jar файл, используя Maven:
 ```bash
@@ -26,13 +26,13 @@
 ```
 * Для запуска программы используйте команду:
 ```bash
-   java -jar target\file-filter-1.0-SNAPSHOT.jar < опции и файлы >
+   java -jar target\filefilter-v1.jar < опции и файлы >
 ```    
 ### Примеры
 ```bash
-   java -jar target\file-filter-1.0-SNAPSHOT.jar -f -a -p result_ E:\cft\in1.txt
-   java -jar target\file-filter-1.0-SNAPSHOT.jar -o D:\Education\test -s E:\cft\in2.txt E:\cft\in3.txt 
-   java -jar target\file-filter-1.0-SNAPSHOT.jar E:\cft\in1.txt E:\cft\in2.txt
+   java -jar target\filefilter-v1.jar -f -a -p result_ E:\cft\in1.txt
+   java -jar target\filefilter-v1.jar -o D:\Education\test -s E:\cft\in2.txt E:\cft\in3.txt 
+   java -jar target\filefilter-v1.jar E:\cft\in1.txt E:\cft\in2.txt
 ```
 Примечание:
 - Указывайте абсолютный (полный) путь до папок и файлов назначения
@@ -42,5 +42,5 @@
 
 ### Установка
 
-- Версия java - JDK 17
+- Версия java - JDK 21
 - Система сборки - Apache Maven 3.9.9
