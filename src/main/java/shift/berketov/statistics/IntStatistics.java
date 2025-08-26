@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class IntStatistics implements StatisticsData{
     private final List<Long> dataFromFilter = new ArrayList<>();
     private String fileName = "integers.txt";
+    private String prefix = "";
     private long intCounter;
     private long sum;
 
@@ -16,9 +17,7 @@ public class IntStatistics implements StatisticsData{
         this.intCounter++;
     }
     @Override
-    public String getName() {
-        return this.fileName;
-    }
+    public String getName() {return this.prefix + fileName;}
 
     public long getIntCounter() {
         return intCounter;
@@ -57,9 +56,12 @@ public class IntStatistics implements StatisticsData{
         this.fileName = name;
     }
 
+    @Override
+    public void setPrefix(String prefix) {this.prefix = prefix;}
+
     public void printFullStat() {
         System.out.println( "Полная статистика{" +
-                "Имя файла = '" + fileName + '\'' +
+                "Имя файла = '" + prefix + fileName + '\'' +
                 ", Общее количество элементов = " + intCounter +
                 ", минимальное число = " + getMin() +
                 ", максимальное число = " + getMax() +

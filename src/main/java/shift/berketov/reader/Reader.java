@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Reader {
     void read();
-    List<String> getAllLinesFromFiles();
+    List<String> getAllReadData();
 }

@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class FloatStatistics implements StatisticsData{
     private final List<Double> dataFromFilter = new ArrayList<>();
     private String fileName = "floats.txt";
+    private String prefix = "";
     private int floatCounter;
     private double sum;
 
@@ -16,9 +17,7 @@ public class FloatStatistics implements StatisticsData{
         this.floatCounter++;
     }
     @Override
-    public String getName() {
-        return this.fileName;
-    }
+    public String getName() {return this.prefix + fileName;}
 
     public int getFloatCounter() {
         return floatCounter;
@@ -57,9 +56,12 @@ public class FloatStatistics implements StatisticsData{
         this.fileName = name;
     }
 
+    @Override
+    public void setPrefix(String prefix) {this.prefix = prefix;}
+
     public void printFullStat() {
         System.out.println( "Полная статистика{" +
-                "Имя файла = '" + fileName + '\'' +
+                "Имя файла = '" + prefix + fileName + '\'' +
                 ", Общее количество элементов = " + floatCounter +
                 ", минимальное число = " + getMin() +
                 ", максимальное число = " + getMax() +

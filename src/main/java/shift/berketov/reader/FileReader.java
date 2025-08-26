@@ -5,21 +5,22 @@ import shift.berketov.settings.Settings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileReader implements Reader {
-    private final Settings settings;
+    private List<String> userPaths = new ArrayList<>();
     private final List<String> allLinesFromFiles = new ArrayList<>();
 
-    public FileReader(Settings config) {
-        this.settings = config;
+    public FileReader(List<String> userPaths) {
+        this.userPaths = userPaths;
     }
 
     @Override
     public void read() {
-        for (String currentPath : settings.getPaths()) {
+        for (String currentPath : userPaths) {
             try (BufferedReader reader = Files.newBufferedReader(Paths.get(currentPath))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
@@ -37,7 +38,7 @@ public class FileReader implements Reader {
         }
     }
 
-    public List<String> getAllLinesFromFiles() {
+    public List<String> getAllReadData() {
         return allLinesFromFiles;
     }
 }

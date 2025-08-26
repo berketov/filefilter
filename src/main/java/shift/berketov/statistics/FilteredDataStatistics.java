@@ -1,24 +1,23 @@
 package shift.berketov.statistics;
 
-import shift.berketov.settings.Settings;
 import shift.berketov.filter.FilterByDataType;
 
 public class FilteredDataStatistics implements Statistics {
-    private final Settings settings;
+    private final boolean isFullStatistics;
     private final IntStatistics intStat;
     private final FloatStatistics floatStat;
     private final StringStatistics stringStat;
 
-    public FilteredDataStatistics(FilterByDataType filter, Settings settings) {
-        this.settings = settings;
+    public FilteredDataStatistics(FilterByDataType filter, boolean isFullStatistics) {
         intStat = filter.getIntStat();
         floatStat = filter.getFloatStat();
         stringStat = filter.getStringStat();
+        this.isFullStatistics = isFullStatistics;
     }
 
     @Override
     public void generateStatistics() {
-        if (settings.hasFullStatistics()) {
+        if (isFullStatistics) {
             generateFullStatistics();
         } else  {
             generateShortStatistics();

@@ -11,14 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileWriter implements Writer {
-    private final Settings settings;
+    private final String pathOut;
     private final List<StatisticsData> allElementsForWrite = new ArrayList<>();
 
-    public FileWriter(FilterByDataType filter, Settings settings) {
-        this.settings = settings;
-        allElementsForWrite.add(filter.getIntStat());
-        allElementsForWrite.add(filter.getFloatStat());
-        allElementsForWrite.add(filter.getStringStat());
+    public FileWriter(List<StatisticsData> allStatisticsData, String pathOut) {
+        this.pathOut = pathOut;
+        allElementsForWrite.addAll(allStatisticsData);
     }
 
     @Override
@@ -29,7 +27,7 @@ public class FileWriter implements Writer {
                 continue;
             } else {
                 try (BufferedWriter writer = new BufferedWriter(
-                        new java.io.FileWriter((settings.getPathOut() + "/" + data.getName()), StandardCharsets.UTF_8))) {
+                        new java.io.FileWriter((pathOut + "/" + data.getName()), StandardCharsets.UTF_8))) {
                     for (String line : lines) {
                         writer.write(line);
                         writer.newLine();

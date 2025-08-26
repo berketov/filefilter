@@ -9,6 +9,7 @@ import static java.util.Comparator.comparing;
 public class StringStatistics implements StatisticsData{
     private final List<String> dataFromFilter = new ArrayList<>();
     private String fileName = "strings.txt";
+    private String prefix = "";
     private int strCounter;
 
     public void setLine(String s) {
@@ -17,7 +18,7 @@ public class StringStatistics implements StatisticsData{
     }
     @Override
     public String getName() {
-        return this.fileName;
+        return this.prefix + fileName;
     }
 
     public int getStrCounter() {
@@ -42,9 +43,14 @@ public class StringStatistics implements StatisticsData{
         this.fileName = name;
     }
 
+    @Override
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
     public void printFullStat() {
         System.out.println( "Полная статистика{" +
-                "Имя файла = '" + fileName + '\'' +
+                "Имя файла = '" + prefix + fileName + '\'' +
                 ", Общее количество элементов = " + getStrCounter() +
                 ", длинна самой короткой строчки = " + getShortestString() +
                 ", длинна самой длинной строчки = " + getLongestString() +
