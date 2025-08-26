@@ -20,7 +20,7 @@
 ### Использование
 * Откройте окно командной строки и перейдите в тот каталог, куда хотели бы скачать программу:
 
-cd ...\ваш\каталог
+    cd ...\ваш\каталог
 
 * Скопируйте проект с GitHub, используя команду:
 
@@ -40,9 +40,11 @@ cd ...\ваш\каталог
    
 ### Примеры
 
-   java -jar target\filefilter-v1.jar -f -a -p result_ E:\test\файл1.txt
-   java -jar target\filefilter-v1.jar -o D:\Education\example -s E:\test\файл2.txt E:\test\файл3.txt 
-   java -jar target\filefilter-v1.jar E:\test\файл1.txt E:\test\файл2.txt
+java -jar target\filefilter-v1.jar -f -a -p result_ E:\test\файл1.txt
+
+java -jar target\filefilter-v1.jar -o D:\Education\example -s E:\test\файл2.txt E:\test\файл3.txt 
+
+java -jar target\filefilter-v1.jar E:\test\файл1.txt E:\test\файл2.txt
 
 ### Установки
 - Версия java - JDK 21
