@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class FloatStatistics implements StatisticsData{
     private final List<Double> dataFromFilter = new ArrayList<>();
-    private String fileName = "floats.txt";
+    private final String fileName = "floats.txt";
     private String prefix = "";
     private int floatCounter;
     private double sum;
@@ -50,10 +50,6 @@ public class FloatStatistics implements StatisticsData{
         strList = dataFromFilter.stream().map(Object::toString)
                 .collect(Collectors.toList());
         return strList;
-    }
-    @Override
-    public void setName(String name) {
-        this.fileName = name;
     }
 
     @Override

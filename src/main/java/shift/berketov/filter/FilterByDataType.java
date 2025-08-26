@@ -1,16 +1,13 @@
 package shift.berketov.filter;
 
-import shift.berketov.reader.Reader;
-import shift.berketov.settings.Settings;
 import shift.berketov.statistics.FloatStatistics;
 import shift.berketov.statistics.IntStatistics;
 import shift.berketov.statistics.StatisticsData;
 import shift.berketov.statistics.StringStatistics;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class FilterByDataType implements Filter {
     private final IntStatistics intStat = new IntStatistics();
@@ -20,9 +17,6 @@ public class FilterByDataType implements Filter {
     @Override
     public void filtration(List<String> allLinesFromFiles) {
         List<String> listForFiltration = new ArrayList<>(allLinesFromFiles);
-//        if (settings.isAppendMode()) {
-//            updateContent(listForFiltration);
-//        }
 
         for (String s : listForFiltration) {
             if (isInteger(s)) {

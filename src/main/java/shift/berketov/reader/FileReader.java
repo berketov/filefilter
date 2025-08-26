@@ -1,17 +1,14 @@
 package shift.berketov.reader;
 
-import shift.berketov.settings.Settings;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileReader implements Reader {
-    private List<String> userPaths = new ArrayList<>();
+    private final List<String> userPaths;
     private final List<String> allLinesFromFiles = new ArrayList<>();
 
     public FileReader(List<String> userPaths) {

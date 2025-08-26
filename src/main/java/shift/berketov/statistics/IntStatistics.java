@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class IntStatistics implements StatisticsData{
     private final List<Long> dataFromFilter = new ArrayList<>();
-    private String fileName = "integers.txt";
+    private final String fileName = "integers.txt";
     private String prefix = "";
     private long intCounter;
     private long sum;
@@ -50,10 +50,6 @@ public class IntStatistics implements StatisticsData{
         strList = dataFromFilter.stream().map(Object::toString)
                 .collect(Collectors.toList());
         return strList;
-    }
-    @Override
-    public void setName(String name) {
-        this.fileName = name;
     }
 
     @Override

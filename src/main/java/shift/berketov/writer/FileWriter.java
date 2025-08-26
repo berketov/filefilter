@@ -1,7 +1,5 @@
 package shift.berketov.writer;
 
-import shift.berketov.settings.Settings;
-import shift.berketov.filter.FilterByDataType;
 import shift.berketov.statistics.StatisticsData;
 
 import java.io.BufferedWriter;

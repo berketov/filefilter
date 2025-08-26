@@ -11,7 +11,6 @@ public class Settings {
     private final List<String> paths = new ArrayList<>();
 
     private boolean appendMode;
-    private boolean isFileNamePrefix;
     private boolean isShortStatistics;
     private boolean isFullStatistics;
 
@@ -32,7 +31,6 @@ public class Settings {
                     }
                     case "-p" -> {
                         fileNamePrefix = args[i + 1];
-                        isFileNamePrefix = true;
                         i++;
                         continue;
                     }
@@ -73,7 +71,6 @@ public class Settings {
         }
     }
 
-    public boolean hasFileNamePrefix() {return isFileNamePrefix;}
     public boolean isAppendMode() {return appendMode;}
     public boolean hasShortStatistics() {return isShortStatistics;}
     public boolean hasFullStatistics() {return isFullStatistics;}

@@ -8,7 +8,7 @@ import static java.util.Comparator.comparing;
 
 public class StringStatistics implements StatisticsData{
     private final List<String> dataFromFilter = new ArrayList<>();
-    private String fileName = "strings.txt";
+    private final String fileName = "strings.txt";
     private String prefix = "";
     private int strCounter;
 
@@ -37,10 +37,6 @@ public class StringStatistics implements StatisticsData{
     @Override
     public List<String> getDataFromStatistics() {
         return dataFromFilter;
-    }
-    @Override
-    public void setName(String name) {
-        this.fileName = name;
     }
 
     @Override
