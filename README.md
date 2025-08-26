@@ -49,6 +49,6 @@ java -jar target\filefilter-v1.jar -o D:\Education\example -s E:\test\файл2.
 java -jar target\filefilter-v1.jar E:\test\файл1.txt E:\test\файл2.txt
 
 ### Установки
-- Версия java - JDK 21
+- Java - JDK версия 21
 - Система сборки - Apache Maven 3.9.9
 - Git
