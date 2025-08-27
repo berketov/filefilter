@@ -28,9 +28,9 @@ public class AppController {
         List<String> filesContent = readFiles();
 
         if (settings.isAppendMode()) {
-            List<String> stringsToAdd = readConsole(filesContent);
+            List<String> linesToAdd = readConsole(filesContent);
             ContentUpdater updater = new ContentUpdater();
-            filesContent = updater.append(filesContent, stringsToAdd);
+            filesContent = updater.append(filesContent, linesToAdd);
         }
 
         fileFiltration(filesContent);
