@@ -26,9 +26,9 @@ public class FilteredDataStatistics implements Statistics {
 
     private void generateShortStatistics() {
         System.out.println("Короткая статистика {" +
-                "Количество элементов в файле " + intStat.getName() + " = " + intStat.getIntCounter() + ", " +
-                "Количество элементов в файле " + floatStat.getName() + " = " + floatStat.getFloatCounter() + ", " +
-                "Количество элементов в файле " + stringStat.getName() + " = " + stringStat.getStrCounter() +
+                "Количество элементов в файле " + intStat.getFullName() + " = " + intStat.getIntCounter() + ", " +
+                "Количество элементов в файле " + floatStat.getFullName() + " = " + floatStat.getFloatCounter() + ", " +
+                "Количество элементов в файле " + stringStat.getFullName() + " = " + stringStat.getStrCounter() +
                 '}');
     }
 

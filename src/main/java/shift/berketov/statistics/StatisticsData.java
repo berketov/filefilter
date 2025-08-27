@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface StatisticsData {
     List<String> getDataFromStatistics();
-    String getName();
+    String getFullName();
     void setPrefix(String prefix);
 }

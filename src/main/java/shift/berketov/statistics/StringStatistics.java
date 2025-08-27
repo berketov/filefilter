@@ -17,7 +17,7 @@ public class StringStatistics implements StatisticsData{
         this.strCounter++;
     }
     @Override
-    public String getName() {
+    public String getFullName() {
         return this.prefix + fileName;
     }
 

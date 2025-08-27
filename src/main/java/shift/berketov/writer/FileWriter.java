@@ -10,22 +10,22 @@ import java.util.List;
 
 public class FileWriter implements Writer {
     private final String pathOut;
-    private final List<StatisticsData> allElementsForWrite = new ArrayList<>();
+    private final List<StatisticsData> dataToWrite = new ArrayList<>();
 
     public FileWriter(List<StatisticsData> allStatisticsData, String pathOut) {
         this.pathOut = pathOut;
-        allElementsForWrite.addAll(allStatisticsData);
+        dataToWrite.addAll(allStatisticsData);
     }
 
     @Override
     public void write() {
-        for (StatisticsData data : allElementsForWrite) {
+        for (StatisticsData data : dataToWrite) {
             List<String> lines = data.getDataFromStatistics();
             if (lines.isEmpty()) {
                 continue;
             } else {
                 try (BufferedWriter writer = new BufferedWriter(
-                        new java.io.FileWriter((pathOut + "/" + data.getName()), StandardCharsets.UTF_8))) {
+                        new java.io.FileWriter((pathOut + "/" + data.getFullName()), StandardCharsets.UTF_8))) {
                     for (String line : lines) {
                         writer.write(line);
                         writer.newLine();

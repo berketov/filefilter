@@ -17,7 +17,7 @@ public class FloatStatistics implements StatisticsData{
         this.floatCounter++;
     }
     @Override
-    public String getName() {return this.prefix + fileName;}
+    public String getFullName() {return this.prefix + fileName;}
 
     public int getFloatCounter() {
         return floatCounter;

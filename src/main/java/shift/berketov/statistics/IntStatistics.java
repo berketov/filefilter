@@ -17,7 +17,7 @@ public class IntStatistics implements StatisticsData{
         this.intCounter++;
     }
     @Override
-    public String getName() {return this.prefix + fileName;}
+    public String getFullName() {return this.prefix + fileName;}
 
     public long getIntCounter() {
         return intCounter;

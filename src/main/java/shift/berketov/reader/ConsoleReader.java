@@ -1,15 +1,12 @@
 package shift.berketov.reader;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleReader implements Reader{
-    private final List<String> data;
-
-    public ConsoleReader(List<String> dataFromFromReader) {
-        this.data = dataFromFromReader;
-    }
+    private final List<String> data = new ArrayList<>();
 
     @Override
     public void read() {

@@ -1,6 +1,5 @@
 package shift.berketov.filter;
 
-import shift.berketov.reader.Reader;
 import shift.berketov.statistics.StatisticsData;
 
 import java.util.List;

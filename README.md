@@ -57,7 +57,7 @@ java -jar target/filefilter-v1.jar /home/user/documents/MyFile1.txt /home/user/d
 
 Windows
 
-java -jar target\filefilter-v1.jar -o D:\education\example -s E:\test\MyFile1.txt E:\test\MyFile2.txt
+java -jar target\filefilter-v1.jar -o D:\work\example -s E:\test\MyFile1.txt E:\test\MyFile2.txt
 
-
+Готовые образцы для фильтрации находятся в папке src/test/resources
 
