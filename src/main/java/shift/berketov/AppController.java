@@ -3,6 +3,7 @@ package shift.berketov;
 import shift.berketov.filter.Filter;
 import shift.berketov.reader.ConsoleReader;
 import shift.berketov.reader.Reader;
+import shift.berketov.settings.ContentUpdater;
 import shift.berketov.settings.Settings;
 import shift.berketov.filter.FilterByDataType;
 import shift.berketov.reader.FileReader;
@@ -24,10 +25,12 @@ public class AppController {
     }
 
     public void launch() {
-        List<String> filesContent = runFileReader();
+        List<String> filesContent = readFiles();
 
         if (settings.isAppendMode()) {
-          filesContent = runConsoleReader(filesContent);
+            List<String> stringsToAdd = readConsole(filesContent);
+            ContentUpdater updater = new ContentUpdater();
+            filesContent = updater.append(filesContent, stringsToAdd);
         }
 
         fileFiltration(filesContent);
@@ -40,13 +43,13 @@ public class AppController {
         runWriter();
     }
 
-    private List<String> runFileReader() {
+    private List<String> readFiles() {
         reader = new FileReader(settings.getPaths());
         reader.read();
         return reader.getAllReadData();
     }
 
-    private List<String> runConsoleReader(List<String> content) {
+    private List<String> readConsole(List<String> content) {
         reader = new ConsoleReader(content);
         reader.read();
         return reader.getAllReadData();
