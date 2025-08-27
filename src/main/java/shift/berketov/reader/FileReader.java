@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FileReader implements Reader {
     private final List<String> userPaths;
-    private final List<String> allLinesFromFiles = new ArrayList<>();
+    private final List<String> data = new ArrayList<>();
 
     public FileReader(List<String> userPaths) {
         this.userPaths = userPaths;
@@ -22,10 +22,10 @@ public class FileReader implements Reader {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     if (!line.isEmpty()) {
-                        allLinesFromFiles.add(line);
+                        data.add(line);
                     }
                 }
-                if (allLinesFromFiles.isEmpty()) {
+                if (data.isEmpty()) {
                     System.out.println("Файл" + currentPath + " не имеет данных для фильтрации.");
                     break;
                 }
@@ -35,8 +35,9 @@ public class FileReader implements Reader {
         }
     }
 
+    @Override
     public List<String> getAllReadData() {
-        return allLinesFromFiles;
+        return data;
     }
 }
 

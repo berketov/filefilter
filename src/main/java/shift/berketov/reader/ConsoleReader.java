@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleReader implements Reader{
-    private final List<String> extraDataFromScanner;
+    private final List<String> data;
 
     public ConsoleReader(List<String> dataFromFromReader) {
-        this.extraDataFromScanner = dataFromFromReader;
+        this.data = dataFromFromReader;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class ConsoleReader implements Reader{
             return;
         } else {
             String[] words = in.split(",|, ");
-            extraDataFromScanner.addAll(Arrays.asList(words));
+            data.addAll(Arrays.asList(words));
         }
     }
 
     @Override
     public List<String> getAllReadData() {
-        return extraDataFromScanner;
+        return data;
     }
 }
