@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Settings {
     private String pathOut = "./";
-    private String fileNamePrefix;
+    private String fileNamePrefix = "";
     private final List<String> paths = new ArrayList<>();
 
     private boolean appendMode;
