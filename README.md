@@ -53,18 +53,18 @@
 
 * Для запуска программы используйте команду:
 
-   java -jar target/filefilter-v1.jar < опции и файлы >
+   java -jar target/filefilter-v1.jar опции и файлы 
 
 ### Примеры
 - Unix
 
-java -jar target/filefilter-v1.jar -f -a -p result_ /home/user/documents/MyFile.txt
+java -jar target/filefilter-v1.jar -f -a -p result_ /home/user/documents/file.txt
 
-java -jar target/filefilter-v1.jar /home/user/documents/MyFile1.txt /home/user/documents/MyFile2.txt
+java -jar target/filefilter-v1.jar /home/user/documents/file1.txt /home/user/documents/file2.txt
 
 - Windows
 
-java -jar target\filefilter-v1.jar -o D:\work\example -s E:\test\MyFile1.txt E:\test\MyFile2.txt
+java -jar target\filefilter-v1.jar -o D:\work\example -s E:\test\file1.txt E:\test\file2.txt
 
 - Готовые образцы для фильтрации:
 
