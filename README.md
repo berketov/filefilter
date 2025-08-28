@@ -55,20 +55,25 @@
 
    java -jar target/filefilter-v1.jar опции и файлы 
 
-### Примеры
+### Примеры с готовыми образцами для фильтрации
+Если файлы для фильтрации находятся в корневой папке, к ним можно обращаться не используя полный путь, как представлено в образцах.
+
+java -jar target/filefilter-v1.jar -f -a -o src/test/results -p result_ src/test/resources/sample1.txt src/test/resources/sample2.txt
+
+
+java -jar target/filefilter-v1.jar -s src/test/resources/sample1.txt src/test/resources/sample2.txt
+
+### Примеры для разных ОС
 - Unix
 
 java -jar target/filefilter-v1.jar -f -a -p result_ /home/user/documents/file.txt
 
-java -jar target/filefilter-v1.jar /home/user/documents/file1.txt /home/user/documents/file2.txt
 
 - Windows
 
 java -jar target\filefilter-v1.jar -o D:\work\example -s E:\test\file1.txt E:\test\file2.txt
 
-- Готовые образцы для фильтрации:
 
-src/test/resources/sample1.txt
 
-src/test/resources/sample2.txt
+
 
