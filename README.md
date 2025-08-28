@@ -56,15 +56,19 @@
    java -jar target/filefilter-v1.jar < опции и файлы >
 
 ### Примеры
-Unix
+- Unix
 
 java -jar target/filefilter-v1.jar -f -a -p result_ /home/user/documents/MyFile.txt
 
 java -jar target/filefilter-v1.jar /home/user/documents/MyFile1.txt /home/user/documents/MyFile2.txt
 
-Windows
+- Windows
 
 java -jar target\filefilter-v1.jar -o D:\work\example -s E:\test\MyFile1.txt E:\test\MyFile2.txt
 
-Готовые образцы для фильтрации находятся в папке src/test/resources
+- Готовые образцы для фильтрации:
+
+src/test/resources/sample1.txt
+
+src/test/resources/sample2.txt
 
