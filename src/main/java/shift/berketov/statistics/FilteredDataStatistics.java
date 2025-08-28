@@ -24,18 +24,18 @@ public class FilteredDataStatistics implements Statistics {
         }
     }
 
+    private void generateFullStatistics() {
+        intStat.printFullStat();
+        floatStat.printFullStat();
+        stringStat.printFullStat();
+    }
+
     private void generateShortStatistics() {
         System.out.println("Короткая статистика {" +
                 "Количество элементов в файле " + intStat.getFullName() + " = " + intStat.getIntCounter() + ", " +
                 "Количество элементов в файле " + floatStat.getFullName() + " = " + floatStat.getFloatCounter() + ", " +
                 "Количество элементов в файле " + stringStat.getFullName() + " = " + stringStat.getStrCounter() +
                 '}');
-    }
-
-    private void generateFullStatistics() {
-        intStat.printFullStat();
-        floatStat.printFullStat();
-        stringStat.printFullStat();
     }
 }
 
