@@ -1,7 +1,9 @@
 package shift.berketov.settings;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,18 +50,18 @@ public class Settings {
                         continue;
                     }
                 }
-                if (args[i].endsWith(".txt") && !isFileExist(args[i])) {
-                    System.out.printf("Файл %s не найден.", args[i]);
-                } else if (args[i].endsWith(".txt") && isFileExist(args[i])) {
+                if (args[i].endsWith(".txt") && isFileExist(args[i])) {
                     paths.add(args[i]);
+                } else if (args[i].endsWith(".txt") && !isFileExist(args[i])) {
+                    System.out.printf("Файл %s не найден.\n", args[i]);
                 } else {
-                    throw new IllegalArgumentException("Вы ввели неверный аргумент (" + args[i] + ")," +
-                            "обратитесь к инструкции программы. Возможно Вы не указали тип файла в конце его имени.");
+                    System.out.println("Вы ввели неверный аргумент (" + args[i] + ")," +
+                            "обратитесь к инструкции программы.");
                 }
             }
         }
         if (paths.isEmpty()) {
-           throw new IllegalArgumentException("Файлы с типом данных .txt не найдены. Для фильтрации укажите файлы данного типа.");
+            throw new IllegalArgumentException("Файлы с типом данных .txt не найдены. Для фильтрации укажите файлы данного типа.");
         }
     }
 
@@ -71,13 +73,32 @@ public class Settings {
         }
     }
 
-    public boolean isAppendMode() {return appendMode;}
-    public boolean hasShortStatistics() {return isShortStatistics;}
-    public boolean hasFullStatistics() {return isFullStatistics;}
-    private boolean isFileExist(String path) {return Files.exists(Path.of(path));}
+    public boolean isAppendMode() {
+        return appendMode;
+    }
 
-    public String getPathOut() {return pathOut;}
-    public String getFileNamePrefix() {return fileNamePrefix;}
-    public List<String> getPaths() {return paths;}
- }
+    public boolean hasShortStatistics() {
+        return isShortStatistics;
+    }
+
+    public boolean hasFullStatistics() {
+        return isFullStatistics;
+    }
+
+    private boolean isFileExist(String path) {
+        return Files.exists(Path.of(path));
+    }
+
+    public String getPathOut() {
+        return pathOut;
+    }
+
+    public String getFileNamePrefix() {
+        return fileNamePrefix;
+    }
+
+    public List<String> getPaths() {
+        return paths;
+    }
+}
 
