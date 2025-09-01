@@ -55,14 +55,27 @@ public class FloatStatistics implements FilteredData {
     @Override
     public void setPrefix(String prefix) {this.prefix = prefix;}
 
+    public void printShortStat() {
+        if (floatCounter == 0) {
+            return;
+        } else {
+            System.out.println("Короткая статистика {" +
+                    "Количество элементов в файле " + getFullName() + " = " + getFloatCounter() + '}');
+        }
+    }
+
     public void printFullStat() {
-        System.out.println( "Полная статистика{" +
-                "Имя файла = '" + prefix + fileName + '\'' +
-                ", Общее количество элементов = " + floatCounter +
-                ", минимальное число = " + getMin() +
-                ", максимальное число = " + getMax() +
-                ", сумма всех чисел = " + getSum() +
-                ", среднее = " + getAverage() +
-                '}');
+        if (floatCounter == 0) {
+            return;
+        } else {
+            System.out.println("Полная статистика{" +
+                    "Имя файла = '" + prefix + fileName + '\'' +
+                    ", Общее количество элементов = " + floatCounter +
+                    ", минимальное число = " + getMin() +
+                    ", максимальное число = " + getMax() +
+                    ", сумма всех чисел = " + getSum() +
+                    ", среднее = " + getAverage() +
+                    '}');
+        }
     }
 }

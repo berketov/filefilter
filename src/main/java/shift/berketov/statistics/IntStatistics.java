@@ -55,14 +55,27 @@ public class IntStatistics implements FilteredData {
     @Override
     public void setPrefix(String prefix) {this.prefix = prefix;}
 
+    public void printShortStat() {
+        if (intCounter == 0) {
+            return;
+        } else {
+            System.out.println("Короткая статистика {" +
+                    "Количество элементов в файле " + getFullName() + " = " + getIntCounter() + '}');
+        }
+    }
+
     public void printFullStat() {
-        System.out.println( "Полная статистика{" +
-                "Имя файла = '" + prefix + fileName + '\'' +
-                ", Общее количество элементов = " + intCounter +
-                ", минимальное число = " + getMin() +
-                ", максимальное число = " + getMax() +
-                ", сумма всех чисел = " + getSum() +
-                ", среднее = " + getAverage() +
-                '}');
+        if (intCounter == 0) {
+            return;
+        } else {
+            System.out.println("Полная статистика{" +
+                    "Имя файла = '" + prefix + fileName + '\'' +
+                    ", Общее количество элементов = " + intCounter +
+                    ", минимальное число = " + getMin() +
+                    ", максимальное число = " + getMax() +
+                    ", сумма всех чисел = " + getSum() +
+                    ", среднее = " + getAverage() +
+                    '}');
+        }
     }
 }

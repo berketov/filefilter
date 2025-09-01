@@ -26,7 +26,7 @@ public class FileReader implements Reader {
                     }
                 }
                 if (data.isEmpty()) {
-                    System.out.println("Файл" + currentPath + " не имеет данных для фильтрации.");
+                    System.out.println("Файл " + currentPath + " не имеет данных для фильтрации.");
                     break;
                 }
             } catch (IOException e) {

@@ -44,12 +44,25 @@ public class StringStatistics implements FilteredData {
         this.prefix = prefix;
     }
 
+    public void printShortStat() {
+        if (strCounter == 0) {
+            return;
+        } else {
+            System.out.println("Короткая статистика {" +
+                    "Количество элементов в файле " + getFullName() + " = " + getStrCounter() + '}');
+        }
+    }
+
     public void printFullStat() {
-        System.out.println( "Полная статистика{" +
-                "Имя файла = '" + prefix + fileName + '\'' +
-                ", Общее количество элементов = " + getStrCounter() +
-                ", длинна самой короткой строчки = " + getShortestString() +
-                ", длинна самой длинной строчки = " + getLongestString() +
-                '}');
+        if (strCounter == 0) {
+            return;
+        } else {
+            System.out.println("Полная статистика{" +
+                    "Имя файла = '" + prefix + fileName + '\'' +
+                    ", Общее количество элементов = " + getStrCounter() +
+                    ", длинна самой короткой строчки = " + getShortestString() +
+                    ", длинна самой длинной строчки = " + getLongestString() +
+                    '}');
+        }
     }
 }
