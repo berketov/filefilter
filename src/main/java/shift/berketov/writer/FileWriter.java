@@ -1,6 +1,6 @@
 package shift.berketov.writer;
 
-import shift.berketov.statistics.StatisticsData;
+import shift.berketov.statistics.FilteredData;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,17 +10,17 @@ import java.util.List;
 
 public class FileWriter implements Writer {
     private final String pathOut;
-    private final List<StatisticsData> dataToWrite = new ArrayList<>();
+    private final List<FilteredData> dataToWrite = new ArrayList<>();
 
-    public FileWriter(List<StatisticsData> allStatisticsData, String pathOut) {
+    public FileWriter(List<FilteredData> allStatisticsData, String pathOut) {
         this.pathOut = pathOut;
         dataToWrite.addAll(allStatisticsData);
     }
 
     @Override
     public void write() {
-        for (StatisticsData data : dataToWrite) {
-            List<String> lines = data.getDataFromStatistics();
+        for (FilteredData data : dataToWrite) {
+            List<String> lines = data.getData();
             if (lines.isEmpty()) {
                 continue;
             } else {

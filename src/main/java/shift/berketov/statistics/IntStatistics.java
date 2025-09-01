@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IntStatistics implements StatisticsData{
+public class IntStatistics implements FilteredData {
     private final List<Long> dataFromFilter = new ArrayList<>();
     private final String fileName = "integers.txt";
     private String prefix = "";
@@ -45,7 +45,7 @@ public class IntStatistics implements StatisticsData{
     }
 
     @Override
-    public List<String> getDataFromStatistics() {
+    public List<String> getData() {
         List<String> strList;
         strList = dataFromFilter.stream().map(Object::toString)
                 .collect(Collectors.toList());

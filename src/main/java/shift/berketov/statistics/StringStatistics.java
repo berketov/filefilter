@@ -6,7 +6,7 @@ import java.util.List;
 
 import static java.util.Comparator.comparing;
 
-public class StringStatistics implements StatisticsData{
+public class StringStatistics implements FilteredData {
     private final List<String> dataFromFilter = new ArrayList<>();
     private final String fileName = "strings.txt";
     private String prefix = "";
@@ -35,7 +35,7 @@ public class StringStatistics implements StatisticsData{
         return longestString = Collections.max(dataFromFilter, comparing(String::length)).length();
     }
     @Override
-    public List<String> getDataFromStatistics() {
+    public List<String> getData() {
         return dataFromFilter;
     }
 

@@ -8,7 +8,7 @@ import shift.berketov.filter.FilterByDataType;
 import shift.berketov.reader.FileReader;
 import shift.berketov.statistics.FilteredDataStatistics;
 import shift.berketov.statistics.Statistics;
-import shift.berketov.statistics.StatisticsData;
+import shift.berketov.statistics.FilteredData;
 import shift.berketov.writer.FileWriter;
 import shift.berketov.writer.Writer;
 
@@ -59,7 +59,7 @@ public class AppController {
     }
 
     private void addPrefix() {
-        for (StatisticsData data : filter.getAllStatisticsData()) {
+        for (FilteredData data : filter.getFilteredData()) {
             data.setPrefix(settings.getFileNamePrefix());
         }
     }
@@ -70,7 +70,7 @@ public class AppController {
     }
 
     private void runWriter() {
-        Writer writer = new FileWriter(filter.getAllStatisticsData(), settings.getPathOut());
+        Writer writer = new FileWriter(filter.getFilteredData(), settings.getPathOut());
         writer.write();
     }
 }

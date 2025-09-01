@@ -2,7 +2,7 @@ package shift.berketov.filter;
 
 import shift.berketov.statistics.FloatStatistics;
 import shift.berketov.statistics.IntStatistics;
-import shift.berketov.statistics.StatisticsData;
+import shift.berketov.statistics.FilteredData;
 import shift.berketov.statistics.StringStatistics;
 
 import java.util.ArrayList;
@@ -59,8 +59,8 @@ public class FilterByDataType implements Filter {
         return stringStat;
     }
     @Override
-    public List<StatisticsData> getAllStatisticsData() {
-        List<StatisticsData> allStatElements = new ArrayList<>();
+    public List<FilteredData> getFilteredData() {
+        List<FilteredData> allStatElements = new ArrayList<>();
         allStatElements.add(intStat);
         allStatElements.add(floatStat);
         allStatElements.add(stringStat);
