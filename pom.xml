@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cft.bsd</groupId>
-    <artifactId>file-filter</artifactId>
+    <artifactId>filefilter</artifactId>
     <version>v1</version>
 
     <build>
