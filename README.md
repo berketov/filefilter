@@ -77,6 +77,16 @@ java -jar target/filefilter-v1.jar -f -a -o src/test -p result_ src/test/resourc
 
 java -jar target/filefilter-v1.jar -s src/test/resources/sample1.txt src/test/resources/sample2.txt
 
+* Так же, для удобной проверки функционала программы, по адресу src/test/resources расположены файлы с разными типами данных, а так же, один пустой файл: 
+
+src/test/resources/sampleInt.txt
+
+src/test/resources/sampleStr.txt
+
+src/test/resources/sampleFloat.txt
+
+src/test/resources/sampleEmpty.txt
+
 
 
 
