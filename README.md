@@ -26,9 +26,9 @@
 - В случае, если в пути к файлам имеются пробелы - укажите путь в кавычках, например: "C:\My documents\file.txt". То же самое касается и указания пути для записи файлов;
 
 ### Установки
-- Java - JDK версия 17
+- Java - JDK версия 21
 
-(инструкция по установке: https://docs.oracle.com/en/java/javase/17/install/overview-jdk-installation.html)
+(инструкция по установке: https://docs.oracle.com/en/java/javase/21/install/overview-jdk-installation.html)
 - Система сборки - Apache Maven 3.9.9
 
 (инструкция по установке: https://maven.apache.org/install.html)
